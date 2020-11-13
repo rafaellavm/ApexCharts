@@ -1,0 +1,120 @@
+<html>
+<head>
+    <title>ApexCharts</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/apexcharts.js"></script>
+    <script>
+        window.onload = function () {
+            document.getElementById('botao1').addEventListener('click', ClickBotao1, true);
+            document.getElementById('botao2').addEventListener('click', ClickBotao2, true);
+
+            function ClickBotao1() {
+                document.getElementById("chart").innerHTML = "";
+
+                var options = {
+                    series: [{
+                        name: "Provas",
+                        data: [100, 200, 300, 400]
+                    },
+                    {
+                        data: [1000, 2000, 3000, 4000]
+                    },
+                    {
+                        data: [1000, 2000, 3000, 4000]
+                    }
+                    ],
+                    chart: {
+                        type: 'bar',
+                        height: 430
+                    },
+                    plotOptions: {
+                        bar: {
+                            horizontal: true,
+                            dataLabels: {
+                                position: 'top',
+                            },
+                        }
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        offsetX: -6,
+                        style: {
+                            fontSize: '12px',
+                            colors: ['#fff']
+                        }
+                    },
+                    stroke: {
+                        show: true,
+                        width: 1,
+                        colors: ['#fff']
+                    },
+                    xaxis: {
+                        categories: ['CTOS.O', 'CTRG.O', 'CTRM.O', 'CTRR.O'],
+                    },
+                };
+                var chart = new ApexCharts(document.querySelector("#chart"), options);
+                chart.render();
+            }
+
+            function ClickBotao2() {
+
+                document.getElementById("chart").innerHTML = "";
+
+                chart.updateSeries([{
+                name: 'Series A',
+                data: []
+            }])
+
+                var options = {
+                    series: [{
+                        data: [44, 55, 41, 64]},
+                    {
+                        data: [53, 32, 33, 52]}
+                    ],
+                    chart: {
+                        type: 'bar',
+                        height: 430
+                    },
+                    plotOptions: {
+                        bar: {
+                            horizontal: true,
+                            dataLabels: {
+                                position: 'top',
+                            },
+                        }
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        offsetX: -6,
+                        style: {
+                            fontSize: '12px',
+                            colors: ['#fff']
+                        }
+                    },
+
+                    stroke: {
+                        show: true,
+                        width: 1,
+                        colors: ['#fff']
+                    },
+                    xaxis: {
+                        categories: ['CTOS.O', 'CTRG.O', 'CTRM.O', 'CTRR.O'],
+                    },
+
+                };
+                var chart = new ApexCharts(document.querySelector("#chart"), options);
+                chart.render();  // Firstly, prepare the ground
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <button id="botao1">Botão 1</button>
+    <button id="botao2">Botão 2</button>
+    <div id="chart">
+    </div>
+</body>
+
+</html>
